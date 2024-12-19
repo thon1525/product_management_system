@@ -1,4 +1,6 @@
 export interface User {
+    profiles: any;
+    product_img: any;
     id: number;
     name: string;
     email: string;

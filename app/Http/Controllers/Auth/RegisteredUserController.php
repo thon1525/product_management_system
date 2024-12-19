@@ -21,6 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): Response
     {
+
         return Inertia::render('Auth/Register');
     }
 
@@ -41,12 +42,13 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'customer',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::CONSTOMER);
     }
 }
